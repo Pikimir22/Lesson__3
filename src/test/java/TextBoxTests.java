@@ -58,7 +58,7 @@ public class TextBoxTests {
         $x(("//input[@placeholder=\"Mobile Number\"]")).shouldHave(value("1234567890"));
     }
 
-@Test
+    @Test
     void DateOfBirth() {
         $x("//init put[@id=\"dateOfBirthInput\"]").click();
         $x("//div[text()=\"18\"]").click();
@@ -67,16 +67,16 @@ public class TextBoxTests {
 
     @Test
     void Subjects() {
-        $x("//div[@class=\"subjects-auto-complete__value-container subjects-auto-complete__value-container--is-multi css-1hwfws3\"]").click();
-        sleep(2000);
-        $x("//div[contains(@class,\"subjects-auto-complete__value-container\")]").sendKeys("m");
-        $x("//div[contains(@class,\"subjects-auto-complete__value-container\")]").sendKeys(Keys.ENTER);
+        $x("//input[@id=\"subjectsInput\"]").click();
+        $x("//input[@id=\"subjectsInput\"]").sendKeys("Maths");
+        $x("//input[@id=\"subjectsInput\"]").sendKeys(Keys.ENTER);
 
-        // $x("//div[@id = 'react-select-2-option-0']").click();
+        $(By.xpath("//textarea[@id=\"currentAddress\"]")).shouldHave(text("Maths"));
+
     }
 
     @Test
-    void CurrentAddress(){
+    void CurrentAddress() {
         $x("//textarea[@id=\"currentAddress\"]").click();
         $x("//textarea[@id=\"currentAddress\"]").setValue("Apt 42");
 
@@ -105,7 +105,7 @@ public class TextBoxTests {
     }
 
     @AfterAll
-   static void Submit(){
+    static void Submit() {
         $x("//button[@id=\"submit\"]").click();
     }
 
