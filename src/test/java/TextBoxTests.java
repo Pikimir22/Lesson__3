@@ -58,8 +58,10 @@ public class TextBoxTests {
         $x(("//input[@placeholder=\"Mobile Number\"]")).shouldHave(value("1234567890"));
     }
 
-    @Test
+@Test
     void DateOfBirth() {
+        $x("//init put[@id=\"dateOfBirthInput\"]").click();
+        $x("//div[text()=\"18\"]").click();
 
     }
 
