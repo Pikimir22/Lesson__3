@@ -28,16 +28,18 @@ public class TextBoxTests {
 
     @Test
     void fillFormTest() {
-
-        //name
         String firstTest = "First Test";
+        String email = "testEmail@yandex.ru";
+        String state = "Uttar Pradesh";
+        String city = "Lucknow";
+        String mobileNumber = "1234567890";
+        //name
         $x(("//input[@id='firstName']")).setValue("First");
         $x(("//input[@id='lastName']")).setValue("Test");
         //email
-        String email = "testEmail@yandex.ru";
         $x(("//input[@id='userEmail']")).setValue("testEmail@yandex.ru");
         //gender
-        $(".custom-control-label").click();
+        $x("//label[text()='Male']").click();
         //mobile
         $x("//input[@placeholder=\"Mobile Number\"]").setValue("1234567890");
         //dateOfBirth
@@ -49,15 +51,13 @@ public class TextBoxTests {
         $x("//input[@id=\"subjectsInput\"]").click();
         $x("//input[@id=\"subjectsInput\"]").sendKeys("Maths");
         $x("//input[@id=\"subjectsInput\"]").sendKeys(Keys.ENTER);
-        //image
+        //Hobbies
         $("#hobbiesWrapper").$(new ByText("Reading")).click();
-        $("#uploadPicture").uploadFile(new File("C:\\Users\\UserMSI\\Desktop\\forTest.jpg"));
+        //image
+        $("#uploadPicture").uploadFile(new File("src\\test\\resources\\forTest.jpg"));
         //currenAddress
         $x("//textarea[@id=\"currentAddress\"]").click();
         $x("//textarea[@id=\"currentAddress\"]").setValue("Apt 42");
-        //stateAndCity
-        String state = "Uttar Pradesh";
-        String city = "Lucknow";
         //state
         $("#state").click();
         $("#stateCity-wrapper").$(new ByText("Uttar Pradesh")).click();
@@ -68,7 +68,7 @@ public class TextBoxTests {
         $x("//button[@id=\"submit\"]").click();
 
         $(".modal-title").shouldHave(text("Thanks for submitting the form"));
-        $(".table-responsive").shouldHave(text(firstTest), text(email), text("08 August,1994"), text("Male"), text("Maths"), text("Apt 42"),text(state),text(city));
+        $(".table-responsive").shouldHave(text(firstTest), text(email), text("Male"), text(mobileNumber), text("08 August,1994"), text("Maths"),text("Reading"), text("Apt 42"), text(state), text(city));
     }
 
 
