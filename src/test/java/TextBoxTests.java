@@ -70,7 +70,18 @@ public class TextBoxTests {
         $(".modal-dialog").should(appear);
         $(".modal-title").shouldHave(text("Thanks for submitting the form"));
 
-        $(".table-responsive").shouldHave(text(firstName), text(lastName), text(email), text("Male"), text(mobileNumber), text("08 August,1994"), text("Maths"), text("Reading"), text("Apt 42"), text(state), text(city));
+        $(".table-responsive").shouldHave(text(firstName),
+                text(lastName),
+                text(email),
+                text("Male"),
+                text(mobileNumber),
+                text("08 August,1994"),
+                text("Maths"),
+                text("Reading"),
+                text("Apt 42"),
+                text(state),
+                text(city));
+
     }
 
 
