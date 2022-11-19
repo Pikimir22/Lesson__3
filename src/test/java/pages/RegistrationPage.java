@@ -4,6 +4,9 @@ import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.selector.ByText;
 import pages.components.CalendarComponent;
 import pages.components.RegistrationResultsModal;
+import pages.components.StateAndCity;
+
+import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -11,9 +14,11 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationPage {
 
-   private CalendarComponent calendarComponent = new CalendarComponent();
+    private CalendarComponent calendarComponent = new CalendarComponent();
     private final String TITLE_TEXT = "Student Registration Form";
-   private RegistrationResultsModal registrationResultsModal = new RegistrationResultsModal();
+    private RegistrationResultsModal registrationResultsModal = new RegistrationResultsModal();
+    private StateAndCity stateAndCity = new StateAndCity();
+    private File file = new File("src\\test\\resources\\forTest.jpg");
     private SelenideElement
             firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
@@ -22,8 +27,8 @@ public class RegistrationPage {
             numberInput = $("#userNumber"),
             subjectsInput = $("#subjectsInput"),
             dateOfBirthInput = $("#dateOfBirthInput"),
-
-            hobbiesInput = $("#hobbiesWrapper");
+            hobbiesInput = $("#hobbiesWrapper"),
+            currentAddressInput = $x("//textarea[@id=\"currentAddress\"]");//css исакть болле лаконичный xpath для примера
 
     public RegistrationPage openPage() {
         open("/automation-practice-form");
@@ -76,6 +81,30 @@ public class RegistrationPage {
         return this;
     }
 
+    public RegistrationPage setCurrentAddress(String currentAddress) {
+        currentAddressInput.click();
+        $x("//textarea[@id=\"currentAddress\"]").setValue(currentAddress);
+
+        return this;
+    }
+
+    public RegistrationPage state(String state) {
+        stateAndCity.state(state);
+        return this;
+    }
+
+    public RegistrationPage city(String city) {
+        stateAndCity.city(city);
+        return this;
+    }
+
+    public void uploadImg(){
+        $("#uploadPicture").uploadFile(new File("src\\test\\resources\\forTest.jpg"));
+    }
+
+    public void submit() {
+        $x("//button[@id=\"submit\"]").click();
+    }
 
 
     public RegistrationPage modalVerifyResults() {
@@ -83,10 +112,10 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage verifyResul(String key, String value){
-       registrationResultsModal.verifyResul(key,value);
+    public RegistrationPage verifyResul(String key, String value) {
+        registrationResultsModal.verifyResul(key, value);
 
-       return this;
+        return this;
     }
 
 }

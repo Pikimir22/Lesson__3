@@ -3,6 +3,7 @@ package tests;
 
 import com.codeborne.selenide.selector.ByText;
 import org.junit.jupiter.api.Test;
+import pages.RegistrationPage;
 
 import java.io.File;
 
@@ -21,6 +22,7 @@ public class TextBoxTests extends TestBase {
         String mobileNumber = "1234567890";
         String subjects = "Math";
         String hobbies = "Reading";
+        String currentAddress = "Apt 42";
         String state = "Uttar Pradesh";
         String city = "Lucknow";
 
@@ -32,22 +34,16 @@ public class TextBoxTests extends TestBase {
                 .setPhone(mobileNumber)
                 .setBirhDate("08", "August", "1994")
                 .setSubjects(subjects)
-                .setHobbies(hobbies);
+                .setHobbies(hobbies)
+                .setCurrentAddress(currentAddress)
+                .state(state)
+                .city(city);
 
+        RegistrationPage clickOnButton = new RegistrationPage();
+        clickOnButton.submit();
 
-        //image
-        $("#uploadPicture").uploadFile(new File("src\\test\\resources\\forTest.jpg"));
-        //currenAddress
-        $x("//textarea[@id=\"currentAddress\"]").click();
-        $x("//textarea[@id=\"currentAddress\"]").setValue("Apt 42");
-        //state
-        $("#state").click();
-        $("#stateCity-wrapper").$(new ByText("Uttar Pradesh")).click();
-        //city
-        $("#city").click();
-        $("#stateCity-wrapper").$(new ByText("Lucknow")).click();
-        //submit
-        $x("//button[@id=\"submit\"]").click();
+        RegistrationPage downloadIms = new RegistrationPage();
+        downloadIms.uploadImg();
 
         registrationPage.modalVerifyResults()
                 .verifyResul("Student Name", firstName + " " + lastName)
@@ -60,18 +56,6 @@ public class TextBoxTests extends TestBase {
                 .verifyResul("Address", "Apt 42")
                 .verifyResul("State and City", state + " " + city);
 
-        $(".table-responsive").shouldHave(
-                text(firstName),
-                text(lastName),
-                text(email),
-                text("Male"),
-                text(mobileNumber),
-                text("08 August,1994"),
-                text("Maths"),
-                text("Reading"),
-                text("Apt 42"),
-                text(state),
-                text(city));
 
     }
 
