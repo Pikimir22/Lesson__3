@@ -11,7 +11,7 @@ public class RegistrationResultsModal {
         $(".modal-title").shouldHave(text("Thanks for submitting the form"));
 
     }
-    public void verifyResul(String key, String value){
+    public void verifyResult(String key, String value){
         $(".table-responsive").$(byText(key)).parent()
                 .shouldHave(text(value));
     }

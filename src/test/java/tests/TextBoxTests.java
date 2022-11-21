@@ -46,15 +46,15 @@ public class TextBoxTests extends TestBase {
         downloadIms.uploadImg();
 
         registrationPage.modalVerifyResults()
-                .verifyResul("Student Name", firstName + " " + lastName)
-                .verifyResul("Student Email", email)
-                .verifyResul("Gender", gender)
-                .verifyResul("Mobile", mobileNumber)
-                .verifyResul("Date of Birth", "08 August,1994")
-                .verifyResul("Subjects", subjects)
-                .verifyResul("Hobbies", hobbies)
-                .verifyResul("Address", "Apt 42")
-                .verifyResul("State and City", state + " " + city);
+                .verifyResult("Student Name", firstName + " " + lastName)
+                .verifyResult("Student Email", email)
+                .verifyResult("Gender", gender)
+                .verifyResult("Mobile", mobileNumber)
+                .verifyResult("Date of Birth", "08 August,1994")
+                .verifyResult("Subjects", subjects)
+                .verifyResult("Hobbies", hobbies)
+                .verifyResult("Address", "Apt 42")
+                .verifyResult("State and City", state + " " + city);
 
 
     }

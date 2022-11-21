@@ -112,8 +112,8 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage verifyResul(String key, String value) {
-        registrationResultsModal.verifyResul(key, value);
+    public RegistrationPage verifyResult(String key, String value) {
+        registrationResultsModal.verifyResult(key, value);
 
         return this;
     }
