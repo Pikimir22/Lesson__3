@@ -2,10 +2,14 @@ package tests;
 
 
 import com.codeborne.selenide.selector.ByText;
+import com.github.javafaker.Faker;
+import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -15,16 +19,23 @@ public class TextBoxTests extends TestBase {
 
     @Test
     void fillFormTest() {
-        String firstName = "First";
-        String lastName = "Test";
-        String email = "testEmail@yandex.ru";
-        String gender = "Male";
-        String mobileNumber = "1234567890";
-        String subjects = "Math";
-        String hobbies = "Reading";
-        String currentAddress = "Apt 42";
-        String state = "Uttar Pradesh";
-        String city = "Lucknow";
+
+        SimpleDateFormat date = new SimpleDateFormat("dd MMM yyy", Locale.ENGLISH);
+        String [] birthday = date.format(faker.date().birthday()).split(" ");
+
+        String firstName = faker.name().firstName(),
+         lastName = faker.name().lastName(),
+         email = faker.internet().emailAddress(),
+         gender = "Male",
+         mobileNumber = faker.phoneNumber().subscriberNumber(11),
+         userBirthDay = birthday[0],
+         userBirthMonth = birthday[1],
+         userBirthYear = birthday[2],
+         subjects = "Math",
+         hobbies = "Reading",
+         currentAddress = faker.address().streetAddress(),
+         state = "Uttar Pradesh",
+         city = "Lucknow";
 
         registrationPage.openPage()
                 .setFirstName(firstName)
@@ -32,7 +43,7 @@ public class TextBoxTests extends TestBase {
                 .setEmail(email)
                 .setGender(gender)
                 .setPhone(mobileNumber)
-                .setBirhDate("08", "August", "1994")
+                .setBirhDate(userBirthDay, userBirthMonth, userBirthYear)
                 .setSubjects(subjects)
                 .setHobbies(hobbies)
                 .setCurrentAddress(currentAddress)
