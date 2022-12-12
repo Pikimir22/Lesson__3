@@ -51,3 +51,14 @@ task smoke_tests(type: Test) {
         includeTags("smoke")
     }
 }
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['crawler4j/src/main/java']
+        }
+        resources {
+            srcDirs = ['crawler4j/src/main/resources']
+        }
+    }
+}
