@@ -9,6 +9,7 @@ import pages.components.StateAndCity;
 import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -98,7 +99,7 @@ public class RegistrationPage {
         return this;
     }
 
-    public void uploadImg(){
+    public void uploadImg() {
         $("#uploadPicture").uploadFile(new File("src\\test\\resources\\forTest.jpg"));
     }
 
