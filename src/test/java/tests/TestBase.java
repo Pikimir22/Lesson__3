@@ -15,32 +15,30 @@ import pages.RegistrationPage;
 public class TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
     Faker faker = new Faker();
-TestDate testDate = new TestDate();
+    TestDate testDate = new TestDate();
     RegistrationPage clickOnButton = new RegistrationPage();
 
     RegistrationPage downloadIms = new RegistrationPage();
-
-
 
 
     @BeforeAll
     static void openURl() {
         Configuration.browserSize = "1366x710";
         Configuration.baseUrl = "https://demoqa.com";
-     //   DesiredCapabilities capabilities = new DesiredCapabilities();
+       // DesiredCapabilities capabilities = new DesiredCapabilities();
 //capabilities.setCapability("enableVNC",true);
         //capabilities.setCapability("enableVNC",true);
 //Configuration.browserCapabilities = capabilities;
-//Configuration.remote = "https://user1:1234@selenoid.autotest.cloud/wd/hub";
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
     }
 
     @BeforeEach
-    void addListener(){
-        SelenideLogger.addListener("AllureSelenide",new AllureSelenide());
+    void addListener() {
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
 
     @AfterEach
-    void addAttachments(){
+    void addAttachments() {
         Attach.screenshotAs("Last screenshot");
         Attach.pageSource();
         Attach.browserConsoleLogs();
