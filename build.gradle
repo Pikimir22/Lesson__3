@@ -12,6 +12,7 @@ allure {
         version.set("2.19.0")
     }
     adapter { // отвечает за появление папочки build/allure-results
+        aspectjVersion.set("1.9.9.1")
         aspectjWeaver.set(true) //обработка аннотации @Step
         frameworks {
             junit5 { //название фреймворка
@@ -21,12 +22,16 @@ allure {
     }
 }
 
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
+compileTestJava {
+    options.encoding('UTF-8')
+}
+
+compileJava {
+    options.encoding('UTF-8')
 }
 
 dependencies {
-    testImplementation (
+    testImplementation(
             "com.github.javafaker:javafaker:1.0.2",
             "com.codeborne:selenide:6.9.0",
             "io.qameta.allure:allure-selenide:2.19.0",
@@ -43,12 +48,6 @@ tasks.withType(Test) {
             events "started", "skipped", "failed", "standard_error", "standard_out"
             exceptionFormat "short"
         }
-    }
-}
-
-task smoke_tests(type: Test) {
-    useJUnitPlatform {
-        includeTags("smoke")
     }
 }
 
