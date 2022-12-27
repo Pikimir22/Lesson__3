@@ -21,7 +21,7 @@ public class TestBase extends TestData {
         new ChromeOptions().addArguments("start-maximized");
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browser = System.getProperty("browser","chrome");
-        Configuration.remote = System.getProperty("remoteUrl","https://user1:1234@selenoid.autotests.cloud/wd/hub")
+        Configuration.remote = System.getProperty("remoteUrl","https://user1:1234@selenoid.autotests.cloud/wd/hub");
 
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
