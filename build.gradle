@@ -11,7 +11,7 @@ allure {
     report {
         version.set("2.19.0")
     }
-    adapter { // отвечает за появление папочки build/allure-results
+    adapter { // отвечает за появление папки build/allure-results
         aspectjVersion.set("1.9.9.1")
         aspectjWeaver.set(true) //обработка аннотации @Step
         frameworks {
@@ -50,4 +50,17 @@ tasks.withType(Test) {
         }
     }
 }
+
+task prod(type: Test) {
+    useJUnitPlatform {
+        includeTags("prod")
+    }
+}
+
+
+
+
+
+
+
 

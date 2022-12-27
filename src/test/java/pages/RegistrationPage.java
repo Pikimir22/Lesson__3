@@ -2,6 +2,7 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import org.junit.jupiter.api.Tag;
 import pages.components.CalendarComponent;
 import pages.components.RegistrationResultModal;
 import pages.components.UploadFileComponent;
@@ -31,6 +32,7 @@ public class RegistrationPage {
             submitFormButton = $("#submit");
 
     @Step("Открыть страницу регистрации и проверить текст заголовка")
+    @Tag("prod")
     public RegistrationPage openPage() {
         open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text(TITLE_TEXT));

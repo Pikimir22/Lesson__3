@@ -13,12 +13,16 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import testdata.TestData;
 
 public class TestBase extends TestData {
+
+
     @Step("Подготовка")
     @BeforeAll
     static void setup() {
         new ChromeOptions().addArguments("start-maximized");
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        Configuration.browser = System.getProperty("browser","chrome");
+
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
