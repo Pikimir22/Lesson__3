@@ -23,6 +23,7 @@ public class TestBase extends TestData {
         Configuration.browser = System.getProperty("browser","chrome");
         Configuration.remote = System.getProperty("remoteUrl","https://user1:1234@selenoid.autotests.cloud/wd/hub");
         Configuration.browserSize = System.getProperty("browserSize","1320x800");
+        Configuration.browserVersion = System.getProperty("browserVersion","100");
 
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
